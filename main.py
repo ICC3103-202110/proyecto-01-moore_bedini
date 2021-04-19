@@ -1,49 +1,9 @@
-from general_action import General
 import random
+from general_action import General
+from character_action import Character
+from print_options import Print_Option
+
 def main():
-    def menu_character_action():
-        print ("Choose one of the next options")
-        print("1: Duke (TAX)") 
-        print("2: Assasin (MURDER)")  
-        print("3: Captain (BLACKMAIL)")
-        print("4: Ambassador (SWITCH)")
-        return(int(input()))
-
-    def menu_general_action():
-        print ("Choose one of the next options")
-        print("1: Take_coin") 
-        print("2:Foreign_Help")  
-        print("3: Strike")
-        return(int(input()))
-
-    def block_action(num_players):
-        print ("Who wants to block? ")
-        print("0: No One block")
-        print("1: Player 1 blocks") 
-        print("2:Player 2 blocks")  
-        print("3: Player 3 blocks")
-        if num_players == 4:
-            print("4: Player 4 block")
-        return(int(input()))
-    
-    def strike_action(num_players):
-        print ("Which player do you want to hit?")
-        print ("1: Player 1")
-        print("2: Player 2")  
-        print("3: Player 3")
-        if num_players == 4:
-            print("4: Player 4")
-        return(int(input()))
-    
-    def challenge_action(num_players):
-        print ("Who wants to challenge? ")
-        print("0: No One challenge")
-        print("1: Player 1 challenges") 
-        print("2:Player 2 challenges")  
-        print("3: Player 3 challenges")
-        if num_players == 4:
-            print("4: Player 4 challenges")
-        return(int(input()))
     
     def delete_card(cards):
         position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
@@ -68,7 +28,6 @@ def main():
         player.append(deck[0])
         deck.pop(0)
         return player,deck
-
 
     print("Welcome to Coup developed by Renzo bedini and Cristobal Moore")
     num_players = int(input("How many players are going to play?: "))
@@ -99,20 +58,20 @@ def main():
     deck = deck[-(15-(num_players)*2):]
     print(deck)
     while True:
-        choose_1= input("Player 1, choose a general (write G) or character accion (write C): ")            
+        choose_1= input("Player 1, choose a general (write G) or character action (write C): ")            
         if choose_1 =='G':
-            move=menu_general_action()
+            move=Print_Option.menu_general_action()
             if move==1:
                 Money_P1+=General.gain_coin()
                 print(Money_P1)
             if move==2:
-                block=block_action(num_players)
+                block=Print_Option.block_action(num_players)
                 if block==0:
                     Money_P1+=General.foreign_help()
                     print(Money_P1)
             if move==3:
                 if Money_P1>=7:
-                    strike=strike_action(num_players)
+                    strike=Print_Option.strike_action(num_players)
                     if strike==2:
                         General.player_strike(Cards_P2)
                     if strike==3:
@@ -121,10 +80,10 @@ def main():
                             General.player_strike(Cards_P4)
                     Money_P1= Money_P1-7
         if choose_1 == 'C':
-            move=menu_character_action()
+            move=Print_Option.menu_character_action()
             if move==1:
-                challenger=challenge_action(num_players)
-                block=block_action(num_players)
+                challenger=Print_Option.challenge_action(num_players)
+                block=Print_Option.block_action(num_players)
                 if challenger==0 and block==0:
                     Money_P1+=Character.tax()
                 if challenger!=0 and block==0:

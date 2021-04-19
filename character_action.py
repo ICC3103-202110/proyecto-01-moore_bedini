@@ -1,7 +1,6 @@
 class Character:
-    def __init__(self):
-
-
+    def __init__(self,cards):
+        self.__cards = cards
 
     def tax():
         return int(3)
