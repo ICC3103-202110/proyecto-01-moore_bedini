@@ -156,7 +156,7 @@ def main():
                 block=Options.block_action(num_players)
                 if block!=0:
                     decision = input("Do you want to challenge the player that blocked you? (YES or NO)")
-                    if decision == 'YES'
+                    if decision == 'YES':
                         player_x = player(block)
                         if 'Ambassador' or 'Captain' in player_x:
                             Cards_P1 = delete_card(Cards_P1)
@@ -173,8 +173,8 @@ def main():
             if move==4:
                 challenger=Options.challenge_action(num_players)     
                 if challenger!=0:
-                    if 'Captain' in Cards_P1:
-                        position=Cards_P1.index('Captain')
+                    if 'Ambassador' in Cards_P1:
+                        position=Cards_P1.index('Ambassador')
                         print(Cards_P1[position])
                         player_x = player(challenger)
                         delete = delete_card(player_x)
@@ -182,27 +182,9 @@ def main():
                         print(Cards_P1,deck)
                     else:
                         Cards_P1=delete_card(Cards_P1)
-                block=Options.block_action(num_players)
-                if block!=0:
-                    decision = input("Do you want to challenge the player that blocked you? (YES or NO)")
-                    if decision == 'YES'
-                        player_x = player(block)
-                        if 'Ambassador' or 'Captain' in player_x:
-                            Cards_P1 = delete_card(Cards_P1)
-                            position=player_x.index('Captain' or 'Ambassador')
-                            player_x,deck = new_card(deck,player_x,position)
-                            print(Cards_P1,deck)
-                        else:
-                            player_x = delete_card(player_x)
                 else:
-                    stealing = Options.stealing_action(num_players)
-                    money_x=money_player(steal)
-                    Money_P1,money_x = Character.steal(Money_P1,money_x) 
-
-                            
-
-
-
+                    Cards_P1,deck = Character.swap_cards(Cards_P1,deck)
+                    
 
 
 if __name__ == "__main__":
