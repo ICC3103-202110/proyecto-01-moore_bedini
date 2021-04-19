@@ -11,4 +11,13 @@ class Character:
         cards.pop(position)
         return cards
     
+    def steal(Money,Money_x):
+        if Money_x>=2:
+            Money+=2
+            Money_x-=2
+        else:
+            Money+=1
+            Money_x-=1
+        return Money,Money_x
+    
     
