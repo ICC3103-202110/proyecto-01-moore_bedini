@@ -10,7 +10,7 @@ class General:
         return int(2)
     
     
-    def player_hit(cards):
+    def player_strike(cards):
         position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
         print(cards[position])
         cards.pop(position)
