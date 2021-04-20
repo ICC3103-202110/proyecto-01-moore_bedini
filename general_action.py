@@ -3,10 +3,10 @@ class General:
         self.__cards=cards
         self.__money= money
 
-    def gain_coin():
+    def gain_coin(self):
         return int(1)
     
-    def foreign_help():
+    def foreign_help(self):
         return int(2)
     
     def player_strike(cards):

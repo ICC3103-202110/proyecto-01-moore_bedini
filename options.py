@@ -11,7 +11,7 @@ class Options:
         print("4: Ambassador (SWITCH)")
         return(int(input()))
 
-    def menu_general_action():
+    def menu_general_action(self):
         print ("Choose one of the next options")
         print("1: Take_coin") 
         print("2:Foreign_Help")  
@@ -45,4 +45,13 @@ class Options:
         print("3: Player 3 challenges")
         if num_players == 4:
             print("4: Player 4 challenges")
+        return(int(input()))
+
+    def stealing_action(num_players):
+        print ("Which player do you want to steal from?")
+        print ("1: Player 1")
+        print("2: Player 2")  
+        print("3: Player 3")
+        if num_players == 4:
+            print("4: Player 4")
         return(int(input()))
