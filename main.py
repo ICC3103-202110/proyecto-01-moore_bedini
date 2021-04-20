@@ -107,7 +107,7 @@ def main():
                         print(players[i].name, "lost a card for lying about the card")
     
             if move==2:
-               players[i].coins-=3
+                players[i].coins-=3
                 challenger=Options.challenge_action(num_players)                  
                 if challenger!=0:
                     if 'Assasin' in players[i].cards:
@@ -117,8 +117,27 @@ def main():
                     else:
                         delete_card(players[i].cards)
                         print(players[i].name, "lost a card for lying about the card")
-                block=Options.block_action(num_players)
-                """
+                strike=Options.strike_action(num_players)
+                print(players[strike-1].name, "do you want to block the player that murder you? (YES or NO)")
+                decision = input()
+                if decision == 'YES':
+                    print(players[i].name, "do you want to challenge the player that block you? (YES or NO)")
+                    decision2 = input()
+                    if decision2 == 'YES':
+                        player_x = player(strike)
+                        if 'Contessa' in player_x:
+                            delete_card(players[i].cards)
+                            print(players[i].name, "lost a card for challenge the action")
+                        else:
+                            players[strike-1].cards.pop(0)
+                            players[strike-1].cards.pop(1)
+                            print(players[challenger-1].name, "has lost the game")
+                else:
+                    player_x = player(strike)
+                    murder = Character.murder(player_x)
+                    print(players[i].name, "murder", players[strike-1].name)
+
+                
                 if block!=0:
                     decision = input("Do you want to challenge the player that blocked you? (YES or NO)")
                     if decision == 'YES':
@@ -129,11 +148,11 @@ def main():
                         else:
                             delete_card(player_x)
                             print(players[challenger-1].name, "lost a card for lying about the card")
-                        else:
+                    else:
                     strike=Options.strike_action(num_players)
                     player_x = player(strike)
                     murder = Character.murder(player_x)
-                """
+        
             if move==3:
                 challenger=Options.challenge_action(num_players)     
                 if challenger!=0:
