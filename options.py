@@ -3,7 +3,7 @@ class Options:
     def __init__(self,num_players):
         self.__num_players=num_players
     
-    def menu_character_action(self):
+    def menu_character_action():
         print ("Choose one of the next options")
         print("1: Duke (TAX)") 
         print("2: Assasin (MURDER)")  
@@ -11,7 +11,7 @@ class Options:
         print("4: Ambassador (SWITCH)")
         return(int(input()))
 
-    def menu_general_action(self):
+    def menu_general_action():
         print ("Choose one of the next options")
         print("1: Take_coin") 
         print("2:Foreign_Help")  

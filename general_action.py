@@ -3,7 +3,7 @@ class General:
         self.__cards=cards
         self.__money= money
 
-    def gain_coin(self):
+    def gain_coin():
         return int(1)
     
     def foreign_help(self):

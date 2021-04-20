@@ -14,13 +14,13 @@ def main():
     
     def player(challenger):
         if challenger == 1:
-            return (Cards_P1)
+            return (players[0].cards)
         elif challenger == 2:
-            return (Cards_P2)
+            return (players[1].cards)
         elif challenger == 3:
-            return (Cards_P3)
+            return (players[2].cards)
         elif challenger == 4:
-            return (Cards_P4)
+            return (players[3].cards)
     
     def new_card(deck,player,position):
         player.pop(position)
@@ -32,13 +32,13 @@ def main():
 
     def money_player(challenger):
         if challenger == 1:
-            return (Money_P1)
+            return (players[0].coins)
         elif challenger == 2:
-            return (Money_P2)
+            return (players[1].coins)
         elif challenger == 3:
-            return (Money_P3)
+            return (players[2].coins)
         elif challenger == 4:
-            return (Money_P4)
+            return (players[3].coins)
     
     print("Welcome to Coup developed by Renzo bedini and Cristobal Moore") 
     num_players = int(input("How many players are going to play?: "))
@@ -49,82 +49,91 @@ def main():
     CO = 'Contessa'
     deck = [D,A,C,E,CO]*3
     random.shuffle(deck)
-    Player.create_players(deck,num_players)
+    players=Player.create_players(deck,num_players)
+    print(players[0].name)
     print(deck)
-    while True:
-        choose_1= input("Player 1, choose a general (write G) or character action (write C): ")            
+    
+    for i in range(num_players):
+        print(players[i].cards)
+        print(players[i].name, "choose a general (write G) or character action (write C): ")
+        choose_1= input()            
         if choose_1 =='G':
             move=Options.menu_general_action()
             if move==1:
-                Money_P1+=General.gain_coin()
-                print(Money_P1)
-            if move==2:
+                players[i].coins+=General.gain_coin()
+                print(players[i].coins)
+            elif move==2:
                 block=Options.block_action(num_players)
                 if block==0:
-                    Money_P1+=General.foreign_help()
-                    print(Money_P1)
+                    players[i].coins+=General.foreign_help()
                 elif block !=0: 
                     decision = input("Do you want to challenge the player that blocked you? (YES or NO)")
                     if decision == 'YES':
                         player_x = player(block)
                         if 'Duke' in player_x:
-                            Cards_P1 = delete_card(Cards_P1)
+                            print(players[i].name, "lost the card for challenge the block")
+                            players[i].cards = delete_card(players[i].cards)
+                            print(players[i].cards)
                         else:
+                            print(players[block-1].name, "lost a card for lying about the card")
                             player_x=delete_card(player_x)
-            if move==3:
-                if Money_P1>=7:
+                    else:
+                        print(players[block-1].name,"block",players[i].name)
+            elif move==3:
+                if players[i].coins>=7:
                     strike=Options.strike_action(num_players)
-                    if strike==2:
-                        General.player_strike(Cards_P2)
-                    if strike==3:
-                            General.player_strike(Cards_P3)
-                    if strike==4:
-                            General.player_strike(Cards_P4)
-                    Money_P1= Money_P1-7
-        if choose_1 == 'C':
+                    General.player_strike(players[strike-1].cards)
+                    print(players[i].name, "choose hit ",players[strike-1].name)
+                    players[i].coins-=7
+                    print(players[strike-1].name, "lost a card because a hit by ",players[i].name)
+
+        elif choose_1 == 'C':
             move=Options.menu_character_action()
             if move==1:
                 challenger=Options.challenge_action(num_players)
                 if challenger==0:
-                    Money_P1+=Character.tax()
-                    print(Money_P1)
+                    players[i].coins+=Character.tax()
+                    print(players[i].coins,"Gain 3 coins")
                 if challenger!=0:
-                    if 'Duke' in Cards_P1:
-                        position=Cards_P1.index('Duke')
-                        print(Cards_P1[position])
+                    if 'Duke' in players[i].cards:
+                        position=players[i].name.index('Duke')
+                        print(players[i][position].cards)
                         player_x = player(challenger)
-                        delete = delete_card(player_x)
-                        Cards_P1,deck = new_card(deck,Cards_P1,position)
-                        print(Cards_P1,deck)
+                        delete_card(player_x)
+                        players[i].cards,deck = new_card(deck,players[i].cards,position)
+                        print(players[challenger-1].name, "lost a card for challenge the action")
                     else:
-                        delete = delete_card(Cards_P1)
-                
+                        delete_card(players[i].cards)
+                        print(players[i].name, "lost a card for lying about the card")
+    
             if move==2:
-                Money_P1=Money_P1-3
+               players[i].coins-=3
                 challenger=Options.challenge_action(num_players)                  
                 if challenger!=0:
-                    if 'Assasin' in Cards_P1:
+                    if 'Assasin' in players[i].cards:
                         player_x = player(challenger)
-                        player_x.pop(0)
-                        player_x.pop(1)
-                        print("Player", challenger, "has lost")
+                        delete_card(player_x)
+                        print(players[challenger-1].name, "lost a card for challenge the action")
                     else:
-                        Cards_P1 = delete_card(Cards_P1)
+                        delete_card(players[i].cards)
+                        print(players[i].name, "lost a card for lying about the card")
                 block=Options.block_action(num_players)
+                """
                 if block!=0:
                     decision = input("Do you want to challenge the player that blocked you? (YES or NO)")
                     if decision == 'YES':
                         player_x = player(block)
                         if 'Contessa' in player_x:
-                            Cards_P1 = delete_card(Cards_P1)
+                            delete_card(players[i].cards)
+                            print(players[i].name, "lost a card for challenge the action")
                         else:
-                            player_x.pop(0)
-                            player_x.pop(1)
-                            print("Player", block, "has lost")
-                else:
+                            delete_card(player_x)
+                            print(players[challenger-1].name, "lost a card for lying about the card")
+                        else:
                     strike=Options.strike_action(num_players)
                     player_x = player(strike)
                     murder = Character.murder(player_x)
+                """
             if move==3:
                 challenger=Options.challenge_action(num_players)     
                 if challenger!=0:
@@ -155,7 +164,7 @@ def main():
                     Money_P1,money_x = Character.steal(Money_P1,money_x) 
                     
     
-                
+             
 
 
                     
