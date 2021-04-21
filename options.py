@@ -1,10 +1,10 @@
 
 class Options:
-
+    
     def __init__(self,num_players):
         self.__num_players=num_players
     
-    def menu_character_action(self):
+    def menu_character_action():
         print ("Choose one of the next options")
         print("1: Duke (TAX)") 
         print("2: Assasin (MURDER)")  

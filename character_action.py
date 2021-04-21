@@ -12,7 +12,7 @@ class Character:
         print(cards[position])
         cards.pop(position)
         return cards
-    
+        
     def steal(Money,Money_x):
         if Money_x>=2:
             Money+=2
@@ -24,19 +24,20 @@ class Character:
 
     def swap_cards(cards,deck):
         cards.append(deck[0])
-        deck.pop(0)
         cards.append(deck[1])
+        deck.pop(0)
         deck.pop(1)
         print(cards)
-        card_1 = input("First card you don't want to keep? For example: Duke, Captain, etc")
-        position = card.index(card_1)
+        card_1 = input("First card you don't want to keep? For example: Duke, Captain, etc ")
+        position = cards.index(card_1)
         cards.pop(position)
         deck.append(card_1)
-        card_2 = input("Second card you don't want to keep? For example: Duke, Captain, etc")
-        position = card.index(card_2)
+        card_2 = input("Second card you don't want to keep? For example: Duke, Captain, etc ")
+        position = cards.index(card_2)
         cards.pop(position)
         deck.append(card_2)
         random.shuffle(deck)
+        print(cards,deck)
         return cards, deck
         
         
