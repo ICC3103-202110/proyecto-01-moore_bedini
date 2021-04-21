@@ -40,7 +40,7 @@ class Options:
     
     def challenge_action(num_players):
         print ("Who wants to challenge? ")
-        print("0: No One challenge")
+        print("0: No One challenges")
         print("1: Player 1 challenges") 
         print("2:Player 2 challenges")  
         print("3: Player 3 challenges")

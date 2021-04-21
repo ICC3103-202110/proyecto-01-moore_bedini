@@ -40,7 +40,7 @@ def main():
         elif challenger == 4:
             return (players[3].coins)
     
-    print("Welcome to Coup developed by Renzo bedini and Cristobal Moore") 
+    print("Welcome to Coup developed by Renzo Bedini and Cristobal Moore") 
     num_players = int(input("How many players are going to play?: "))
     deck = ['Duke','Assasin','Captain','Ambassador','Contessa']*3
     random.shuffle(deck)
@@ -144,7 +144,7 @@ def main():
                                     print(players[strike-1].name, "has lost the game")
                         else:
                             player_x = player(strike)
-                            murder = Character.murder(player_x)
+                            Character.murder(player_x)
                             print(players[i].name, "assasinated", players[strike-1].name)
                 
                     if move==3:

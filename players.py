@@ -2,7 +2,7 @@ import random
 
 class Player:
     
-    def __init__ (self, name, coins, cards):
+    def __init__ (self,name,coins,cards):
         self.name=name
         self.coins=coins
         self.cards=cards

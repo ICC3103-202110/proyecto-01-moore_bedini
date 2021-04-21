@@ -1,5 +1,5 @@
 class General:
-    def __init__(self,cards,money):
+    def __init__(self, cards, money):
         self.__cards=cards
         self.__money= money
 
