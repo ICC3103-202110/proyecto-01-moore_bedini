@@ -52,9 +52,15 @@ def main():
     players=Player.create_players(deck,num_players)
     print(deck)
     players_alive = num_players
+    print("Before the start of the game, everyone should see their cards")
+    for i in range(num_players):
+        print(players[i].name, "this are your cards")
+        print(players[i].cards)
     while players_alive!=1:
-        for i in range(num_players):
+        for i in range(num_players):    
             if len(players[i].cards)>0:
+                for (a, _) in enumerate(players):
+                    print(f"{a}:{players[a].name} - {players[a].coins}")
                 print(players_alive)  
                 print(players[i].name, "do you want to see your cards? (YES or NO) ")
                 answer = input()
@@ -109,7 +115,7 @@ def main():
                 elif choose_1 == 'C':
                     move=Options.menu_character_action()
                     if move==1:
-                        challenger=Options.challenge_action(num_players)
+                        challenger=Options.challenge_action(num_players, players, i)
                         if challenger==-1:
                             players[i].coins+=Character.tax()
                             print(players[i].name,"gains 3 coins")
