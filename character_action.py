@@ -8,10 +8,15 @@ class Character:
         return int(3)
     
     def murder(cards):
-        position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
-        print(cards[position])
-        cards.pop(position)
-        return cards
+        if len(cards)==2:
+            position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
+            print(cards[position])
+            cards.pop(position)
+            return cards
+        else:
+            cards.pop(0)
+            print(cards[0])
+            return cards
         
     def steal(Money,Money_x):
         if Money_x>=2:
