@@ -1,5 +1,5 @@
 import random
-
+from players import Player
 class Character:
     def __init__(self,cards):
         self.__cards = cards

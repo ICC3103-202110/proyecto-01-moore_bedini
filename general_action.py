@@ -1,3 +1,4 @@
+from players import Player
 class General:
     def __init__(self, cards, money):
         self.__cards=cards
@@ -10,7 +11,12 @@ class General:
         return int(2)
     
     def player_strike(cards):
-        position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
-        print(cards[position])
-        cards.pop(position)
-        return cards
+        if len(cards)==2:
+            position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
+            print(cards[position])
+            cards.pop(position)
+            return cards
+        else:
+            print(cards[0])
+            cards.pop(0)
+            return cards

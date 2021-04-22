@@ -1,4 +1,4 @@
-
+from players import Player
 class Options:
     
     def __init__(self,num_players):
@@ -19,24 +19,25 @@ class Options:
         print("3: Strike")
         return(int(input()))
 
-    def block_action(num_players):
-        print ("Who wants to block? ")
-        print("0: No One block")
-        print("1: Player 1 blocks") 
-        print("2: Player 2 blocks")  
-        print("3: Player 3 blocks")
-        if num_players == 4:
-            print("4: Player 4 block")
-        return(int(input()))
-    
-    def strike_action(num_players):
-        print ("Which player do you want to hit?")
-        print ("1: Player 1")
-        print("2: Player 2")  
-        print("3: Player 3")
-        if num_players == 4:
-            print("4: Player 4")
-        return(int(input()))
+    def block_action(num_players, players, i):
+        for a in range(num_players):
+            if len(players[a].cards)>0:  
+                if players[i].name!=players[a].name:
+                    print (players[a].name," want to block? YES or NO")
+                    b=input()
+                    if b=='YES':                
+                        return int(a)
+        return int(-1)
+
+    def strike_action(num_players, players, name):
+        for a in range(num_players):
+            if len(players[a].cards)>0:
+                if players[a].name!=name:
+                    print ("Do you want to hit,", players[a].name," YES or NO")
+                    b=input()
+                    if b=='YES':                
+                        return int(a)
+
     
     def challenge_action(num_players):
         print ("Who wants to challenge? ")
