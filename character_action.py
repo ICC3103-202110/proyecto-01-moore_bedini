@@ -1,5 +1,5 @@
 import random
-
+from players import Player
 class Character:
     def __init__(self,cards):
         self.__cards = cards
@@ -7,11 +7,31 @@ class Character:
     def tax():
         return int(3)
     
-    def murder(cards):
-        position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
-        print(cards[position])
-        cards.pop(position)
-        return cards
+    def murder(cards, name, cards_players_lost):
+        if len(cards)==2:
+            position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
+            print(cards[position])
+            if name not in cards_players_lost:
+                cards_players_lost.append(name)
+                cards_players_lost.append(cards[position])
+                cards.pop(position)
+                return cards
+            else:
+                visible_name = cards_players_lost.index(name)
+                cards_players_lost.insert(visible_name+1, cards[position])
+                return cards
+            
+        else:
+            if name not in cards_players_lost:
+                cards_players_lost.append(name)
+                cards_players_lost.append(cards[0])
+                cards.pop(0)
+                return cards
+            else:
+                visible_name = cards_players_lost.index(name)
+                cards_players_lost.insert(visible_name+1, cards[0])
+                cards.pop(0)
+                return cards
         
     def steal(Money,Money_x):
         if Money_x>=2:
