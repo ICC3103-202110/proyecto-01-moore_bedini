@@ -58,6 +58,6 @@ class Character:
         cards.pop(position)
         deck.append(card_2)
         random.shuffle(deck)
-        print(cards,deck)
+        print(cards)
         return cards, deck
     
