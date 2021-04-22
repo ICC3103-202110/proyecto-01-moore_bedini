@@ -10,7 +10,6 @@ class General:
     def foreign_help():
         return int(2)
     
-<<<<<<< HEAD
     def player_strike(cards, name, cards_players_lost):
         if len(cards)==2:
             position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
@@ -37,16 +36,3 @@ class General:
                 return cards
                 cards.pop(0)
                 return cards
-=======
-    def player_strike(cards, name):
-        if len(cards)==2:
-            position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
-            print(cards[position])
-            cards.pop(position)
-            return cards
-        else:
-            print(cards[0])
-            cards.pop(0)
-            print(name, "lost the game")
-            return cards
->>>>>>> d279b2c11674384c12031a3f32cc0b382ca6fa9b
