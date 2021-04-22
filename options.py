@@ -1,4 +1,3 @@
-
 from players import Player
 class Options:
     

@@ -1,4 +1,3 @@
-
 from players import Player
 class General:
     def __init__(self, cards, money):
