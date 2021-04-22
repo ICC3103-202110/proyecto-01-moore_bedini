@@ -7,6 +7,7 @@ class Character:
     def tax():
         return int(3)
     
+<<<<<<< HEAD
     def murder(cards, name, cards_players_lost):
         if len(cards)==2:
             position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
@@ -32,6 +33,19 @@ class Character:
                 cards_players_lost.insert(visible_name+1, cards[0])
                 cards.pop(0)
                 return cards
+=======
+    def murder(cards, name):
+        if len(cards)==2:
+            position=int(input("Which card do you want to turn around (Left=0 or Right=1)?"))
+            print(cards[position])
+            cards.pop(position)
+            return cards
+        else:
+            cards.pop(0)
+            print(cards[0])
+            print(name, "has lost the game")
+            return cards
+>>>>>>> d279b2c11674384c12031a3f32cc0b382ca6fa9b
         
     def steal(Money,Money_x):
         if Money_x>=2:
