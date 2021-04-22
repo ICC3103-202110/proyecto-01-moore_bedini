@@ -39,21 +39,21 @@ class Options:
                         return int(a)
 
     
-    def challenge_action(num_players):
-        print ("Who wants to challenge? ")
-        print("0: No One challenges")
-        print("1: Player 1 challenges") 
-        print("2:Player 2 challenges")  
-        print("3: Player 3 challenges")
-        if num_players == 4:
-            print("4: Player 4 challenges")
-        return(int(input()))
+    def challenge_action(num_players, players, i):
+        for a in range(num_players):
+            if len(players[a].cards)>0:  
+                if players[i].name!=players[a].name:
+                    print (players[a].name," want to challenge? YES or NO")
+                    b=input()
+                    if b=='YES':                
+                        return int(a)
+        return int(-1)
 
-    def stealing_action(num_players):
-        print ("Which player do you want to steal from?")
-        print ("1: Player 1")
-        print("2: Player 2")  
-        print("3: Player 3")
-        if num_players == 4:
-            print("4: Player 4")
-        return(int(input()))
+    def stealing_action(num_players,players, name):
+        for a in range(num_players):
+            if len(players[a].cards)>0:
+                if players[a].name!=name:
+                    print ("Do you want to steal from,", players[a].name," YES or NO")
+                    b=input()
+                    if b=='YES':                
+                        return int(a)
