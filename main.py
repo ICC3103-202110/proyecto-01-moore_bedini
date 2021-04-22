@@ -43,7 +43,10 @@ def main():
         player.append(deck[0])
         deck.pop(0)
         return player,deck
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
 
     
     print("Welcome to Coup developed by Renzo Bedini and Cristobal Moore") 
@@ -59,7 +62,11 @@ def main():
         print(players[i].cards)
     cards_players_lost = []
     while players_alive>1:
+<<<<<<< HEAD
         for i in range(num_players):   
+=======
+        for i in range(num_players):    
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
             if len(players[i].cards)>0:
                 print("\nCards of players out of the game: ",cards_players_lost)
                 print("\nCoins of each player ")
@@ -130,8 +137,13 @@ def main():
                                 print(players[i].cards[position])
                                 players[i].cards,deck = new_card(deck,players[i].cards,position)
                                 player_x = player(challenger+1)
+<<<<<<< HEAD
                                 print(players[challenger].name, "looses a card for challenging the action")
                                 delete_card(player_x, players[challenger].name, cards_players_lost)
+=======
+                                delete_card(player_x, players[challenger].name, cards_players_lost)
+                                print(players[challenger].name, "looses a card for challenging the action")
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
                                 if len(players[challenger].cards)==0:  
                                     print(players[challenger].name, "has no more cards")  
                                     print(players[challenger].name, "is out of the game")
@@ -232,14 +244,65 @@ def main():
                                         print(players[challenger].name, "has no more cards")
                                         print(players[challenger].name, "is out of the game")
                                         players_alive = players_alive - 1  
+<<<<<<< HEAD
                                         
+=======
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
                             else:
                                 print(players[i].name, "looses a card for lying about having the card")
                                 delete_card(players[i].cards, players[i].name, cards_players_lost)
                                 if len(players[i].cards)==0:  
+<<<<<<< HEAD
                                     print(players[i].name, "has no more cards")
                                     print(players[i].name, "is out of the game")
                                     players_alive = players_alive - 1
+=======
+                                        print(players[i].name, "has no more cards")
+                                        print(players[i].name, "is out of the game")
+                                        players_alive = players_alive - 1  
+                        steal = Options.stealing_action(num_players, players, players[i].name)
+                        print(players[steal].name, "do you want to block the player that wants to steal from you? (YES or NO) ")
+                        decision = input()
+                        if decision == 'YES':
+                            print(players[i].name, "do you want to challenge the player that blocked you? (YES or NO)")
+                            decision2 = input()
+                            if decision2 == 'YES':
+                                player_x = player(steal+1)
+                                if 'Ambassador' in player_x:
+                                    position=player_x.index('Ambassador')
+                                    print(player_x[position])
+                                    print(players[steal].name, "has the card to block")
+                                    player_x,deck = new_card(deck,player_x,position)
+                                    print(players[i].name, "looses a card for challenging the block")
+                                    delete_card(players[i].cards, players[i].name, cards_players_lost)
+                                    if len(players[i].cards)==0:  
+                                        print(players[i].name, "has no more cards")  
+                                        print(players[i].name, "is out of the game")
+                                        players_alive = players_alive - 1  
+
+                                elif 'Captain' in player_x:
+                                    position=player_x.index('Captain')
+                                    print(player_x[position])
+                                    print(players[steal].name, "has the card to block")
+                                    player_x,deck = new_card(deck,player_x,position)
+                                    print(players[i].name, "looses a card for challenging the block")
+                                    delete_card(players[i].cards, players[i].name, cards_players_lost)
+                                    if len(players[i].cards)==0:  
+                                        print(players[i].name, "has no more cards")  
+                                        print(players[i].name, "is out of the game")
+                                        players_alive = players_alive - 1  
+                                else:
+                                    print(players[steal].name, "looses a card for lying about having the card")
+                                    player_x = delete_card(player_x, players[steal].name, cards_players_lost)
+                                    if len(players[steal].cards)==0:  
+                                        print(players[steal].name, "has no more cards")  
+                                        print(players[steal].name, "is out of the game")
+                                        players_alive = players_alive - 1  
+                        else:
+                            money_x=money_player(steal+1)
+                            players[i].coin,money_x = Character.steal(players[i].coins,money_x) 
+                            print(players[i].name, "stole coins from", players[steal].name)
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
 
                         else:
                             if 'Captain' in players[i].cards:
@@ -302,8 +365,11 @@ def main():
                                     players_alive = players_alive - 1  
                                 else:
                                     print(players[challenger-1].name, "lost a card for challenging")
+<<<<<<< HEAD
                                 players[i].cards,deck = Character.swap_cards(players[i].cards,deck)
                                 print(players[i].name, "swaped two cards from the deck")
+=======
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
                             else:
                                 print(players[i].name, "looses a card for lying about having the card")
                                 delete_card(players[i].cards, players[i].name, cards_players_lost)
@@ -314,8 +380,11 @@ def main():
                         else:
                             players[i].cards,deck = Character.swap_cards(players[i].cards,deck)
                             print(players[i].name, "swaped two cards from the deck")
+<<<<<<< HEAD
             if players_alive==1:
                 break
+=======
+>>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
                 
     for i in range(num_players):    
             if len(players[i].cards)>0:  

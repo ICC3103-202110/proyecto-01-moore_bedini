@@ -14,5 +14,3 @@ class Player:
             deck.pop(0)
             deck.pop(0)
         return players
-    
-    
