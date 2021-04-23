@@ -23,7 +23,7 @@ class Options:
         for a in range(num_players):
             if len(players[a].cards)>0:  
                 if players[i].name!=players[a].name:
-                    print (players[a].name," want to block? YES or NO")
+                    print (players[a].name," want to counterattack? YES or NO")
                     b=input()
                     if b=='YES':                
                         return int(a)
@@ -53,7 +53,7 @@ class Options:
         for a in range(num_players):
             if len(players[a].cards)>0:
                 if players[a].name!=name:
-                    print ("Do you want to steal from,", players[a].name," YES or NO")
+                    print ("Do you want to Extortion from,", players[a].name," YES or NO")
                     b=input()
                     if b=='YES':                
                         return int(a)
