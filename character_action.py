@@ -58,11 +58,6 @@ class Character:
         cards.pop(position)
         deck.append(card_2)
         random.shuffle(deck)
-<<<<<<< HEAD
         print(cards)
         return cards, deck
     
-=======
-        print(cards,deck)
-        return cards, deck
->>>>>>> 2d66802c0b4bb46a77f94b8380b3899950001fde
