@@ -60,4 +60,3 @@ class Character:
         random.shuffle(deck)
         print(cards)
         return cards, deck
-    

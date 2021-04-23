@@ -76,18 +76,17 @@ def main():
                     move=Options.menu_general_action()
                     if move==1:
                         players[i].coins+=General.gain_coin()
-                        log_turn.append(players[i].name+' gains one coin by using Income action')
+                        log_turn.append(players[i].name+' gains 1 coin by using Income action')
                     elif move==2:
                         block=Options.block_action(num_players,players,i)
                         if block==-1:
                             players[i].coins+=General.foreign_help()
-                            print(players[i].coins)
-                            log_turn.append(players[i].name+' gain two coins by using Foreign Help action')
+                            log_turn.append(players[i].name+' gains 2 coins by using Foreign Help action')
                         elif block !=-1:
                             log_turn.append(players[block].name+ " decide to counterattack Foreign Help action used by "+ players[i].name) 
                             decision = input("Do you want to challenge the player that counterattacked you? (YES or NO)")
                             if decision == 'YES':
-                                log_turn.append(players[i].name+ " decides to challenges the counterattack action from "+ players[block].name)
+                                log_turn.append(players[i].name+ " decides to challenge the counterattack action from "+ players[block].name)
                                 player_x = player(block+1)
                                 if 'Duke' in player_x:
                                     position=player_x.index('Duke')
@@ -113,12 +112,18 @@ def main():
                             players[i].coins-=7
                             strike=Options.strike_action(num_players, players, players[i].name)
                             log_turn.append(players[i].name+ " chooses to hit "+players[strike].name)
-                            General.player_strike(players[strike].cards, players[strike].name, cards_players_lost)
                             log_turn.append(players[strike].name+ " lost a card because he got hit by "+players[i].name)
-                            if len(players[strike].cards)==0:
-                                log_turn.append(players[block].name+ " has no more cards") 
-                                log_turn.append(players[block].name+ " is out of the game")
-                                players_alive = players_alive - 1  
+                            if len(players[strike].cards)==2:
+                                General.player_strike(players[strike].cards, players[strike].name, cards_players_lost)
+                            else:
+                                visible_name = cards_players_lost.index(players[strike].name)
+                                cards_players_lost.insert(visible_name+1, players[strike].cards[0])
+                                players[strike].cards.pop(0)
+                                log_turn.append(players[strike].name+ " has no more cards")
+                                log_turn.append(players[strike].name+ " is out of the game")
+                                players_alive = players_alive - 1 
+                        else:
+                            print(players[i].name," doesn't have enough coins to make this action")
                 elif choose_1 == 'C':
                     move=Options.menu_character_action()
                     if move==1:

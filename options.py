@@ -8,8 +8,8 @@ class Options:
         print ("Choose one of the next options")
         print("1: Duke (TAX)") 
         print("2: Assasin (MURDER)")  
-        print("3: Captain (BLACKMAIL)")
-        print("4: Ambassador (SWITCH)")
+        print("3: Captain (EXTORTION)")
+        print("4: Ambassador (EXCHANGE)")
         return(int(input()))
 
     def menu_general_action():
